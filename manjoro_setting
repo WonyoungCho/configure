@@ -1,0 +1,13 @@
+% Korean key setting
+sudo pacman -S ibus-hangul ibus-qt
+~/.xprofile ------
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -drx
+------------------
+reboot computer.
+
+Bottom right keyboard icon - Preferences
+General - Keyboard shortcuts - Next input method - [delete all]
+Input method - Add - Korean - Hangul - [delete English]
