@@ -1,4 +1,4 @@
-% Korean key setting
+% Korean key setting %%%
 sudo pacman -S ibus-hangul ibus-qt
 ~/.xprofile ------
 export GTK_IM_MODULE=ibus
@@ -11,4 +11,9 @@ reboot computer.
 Bottom right keyboard icon - Preferences
 General - Keyboard shortcuts - Next input method - [delete all]
 Input method - Add - Korean - Hangul - [delete English]
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Install Cadabra2 %%%%%
+sudo pacman -S yaourt
+yaourt -Sy cadabra2-git
+%%%%%%%%%%%%%%%%%%%%%%%%
