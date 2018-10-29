@@ -19,3 +19,5 @@ yaourt -Sy cadabra2-git
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 yaourt -Sy google-chrome
+
+sudo pacman -S gcc-fortran
