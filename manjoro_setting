@@ -19,5 +19,10 @@ yaourt -Sy cadabra2-git
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 yaourt -Sy google-chrome
+yaourt -Sy dropbox
 
 sudo pacman -S gcc-fortran
+
+sudo pacman -S openssh
+sudo systemctl enable sshd
+sudo systemctl start sshd
