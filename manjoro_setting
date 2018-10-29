@@ -17,3 +17,5 @@ Input method - Add - Korean - Hangul - [delete English]
 sudo pacman -Sy yaourt
 yaourt -Sy cadabra2-git
 %%%%%%%%%%%%%%%%%%%%%%%%
+
+yaourt -Sy google-chrome
