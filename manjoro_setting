@@ -1,5 +1,9 @@
 sudo pacman-mirrors --fasttrack && sudo pacman -Syyu
 
+% MacOS in bootmenu %
+Open '/etc/grub.d/40_custom'
+Add 'menuentry "Mac OSX" { exit }'
+
 
 % Korean key setting %%%
 sudo pacman -S ibus-hangul ibus-qt
@@ -14,7 +18,7 @@ reboot computer.
 Bottom right keyboard icon - Preferences
 General - Keyboard shortcuts - Next input method - [delete all]
 Input method - Add - Korean - Hangul - [delete English]
-%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % Install Cadabra2 %%%%%
 sudo pacman -Sy yaourt
