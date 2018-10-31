@@ -1,4 +1,4 @@
-Monitoring mathematica license
+Monitoring mathematica license.
 ``` bash
 /usr/local/Wonfram/MathLM/monitorlm
 ```
