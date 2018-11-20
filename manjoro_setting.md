@@ -7,7 +7,6 @@ $ emacs /etc/grub.d/40_custom
 ```
 Add 'menuentry "Mac OSX" { exit }'
 ```
----
 
 # Korean key setting
 ```sh
@@ -26,7 +25,7 @@ $ sudo reboot now
 Bottom right keyboard icon - Preferences
 General - Keyboard shortcuts - Next input method - [delete all]
 Input method - Add - Korean - Hangul - [delete English]
----
+
 
 # Install Cadabra2
 ```sh
@@ -39,7 +38,6 @@ $ yaourt -Sy cadabra2-git
 $ yaourt -Sy google-chrome
 $ yaourt -Sy dropbox
 ```
----
 
 # 프로그래밍 환경
 ```sh
@@ -47,7 +45,6 @@ $ sudo pacman -S gcc
 $ sudo pacman -S gcc-fortran
 $ sudo pacman -S openmpi
 ```
----
 
 # SSH 접속 환경
 ```sh
