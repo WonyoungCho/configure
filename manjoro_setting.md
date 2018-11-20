@@ -12,7 +12,7 @@ Add 'menuentry "Mac OSX" { exit }'
 # Korean key setting
 ```sh
 $ sudo pacman -S ibus-hangul ibus-qt
-$ ~/.xprofile
+$ emacs ~/.xprofile
 ```
 ```
 export GTK_IM_MODULE=ibus
