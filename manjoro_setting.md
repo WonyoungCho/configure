@@ -22,12 +22,11 @@ ibus-daemon -drx
 ```sh
 $ sudo reboot now
 ```
-Bottom right keyboard icon - Preferences
-
-General - Keyboard shortcuts - Next input method - [delete all]
-
-Input method - Add - Korean - Hangul - [delete English]
-
+```
+1. Bottom right keyboard icon - Preferences
+2. General - Keyboard shortcuts - Next input method - [delete all]
+3. Input method - Add - Korean - Hangul - [delete English]
+```
 
 # Install Cadabra2
 ```sh
