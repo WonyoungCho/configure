@@ -1,4 +1,7 @@
-sudo pacman-mirrors --fasttrack && sudo pacman -Syyu
+# Manjaro package manager server update & update
+```sh
+$ sudo pacman-mirrors --fasttrack && sudo pacman -Syyu
+```
 
 # DISPLAY MacOS in bootmenu
 ```sh
