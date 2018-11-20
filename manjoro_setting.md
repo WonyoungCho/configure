@@ -23,7 +23,9 @@ ibus-daemon -drx
 $ sudo reboot now
 ```
 Bottom right keyboard icon - Preferences
+
 General - Keyboard shortcuts - Next input method - [delete all]
+
 Input method - Add - Korean - Hangul - [delete English]
 
 
