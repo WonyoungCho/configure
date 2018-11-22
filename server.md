@@ -1,5 +1,5 @@
 # Basic command
-- pdsh : commands to groups of nodes in parallel
+- pdsh : run a command on multiple nodes in parallel
 > - pdsh -w 'node_name'
 
 ---
