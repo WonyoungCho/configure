@@ -51,15 +51,14 @@
 (global-set-key (kbd "<f6>") 'other-window)
 (global-set-key (kbd "<f7>") 'split-window-below)
 (global-set-key (kbd "<f8>") 'delete-other-windows)
-(global-set-key (kbd "<f9>") 'python-run)
+(global-set-key (kbd "<f9>") 'smart-compile)
 (global-set-key (kbd "<f11>") 'my-next-error)
 (global-set-key (kbd "<f12>") 'my-previous-error)
-
 
 (setq smart-compile-alist
       '(("\\.py\\'"."python %n.py")
 	("\\.for\\'"."ifort -ffixed-line-length-none %f -o %n.exe")
-        ("\\.f\\'"."ifort -O3 %f -o %n.exe")
+        ("\\.f90\\'"."ifort -fopenmp %f -o a && ./a")
         ("\\.tex\\'"."pdflatex %f %n")))
 (setq compilation-read-command nil)
 
@@ -69,9 +68,10 @@
         ;; If M-x compile exists with a 0
         (when (and (eq status 'exit) (zerop code))
           ;; then bury the *compilation* buffer, so that C-x b doesn't go there
-          (bury-buffer "*compilation*")
+          (bury-buffer "*compilation*"))
           ;; and return to whatever were looking at before
-          (replace-buffer-in-windows "*compilation*"))
+	  ;(delete-window (get-buffer-window (get-buffer "*compilation*"))))
+          ;(replace-buffer-in-windows "*compilation*"))
         ;; Always return the anticipated result of compilation-exit-message-function
         (cons msg code)))
 
