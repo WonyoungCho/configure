@@ -33,8 +33,8 @@
 ;(require 'color-theme)
 ;(color-theme-initialize)
 ;(color-theme-tango)
-
 ;(load-theme 'moe)
+
 (global-unset-key (kbd "\C-z"))
 (global-unset-key (kbd "<f10>"))
 (global-set-key (kbd "\C-c C-s") 'gnuplot-run-buffer)
@@ -54,6 +54,9 @@
 (global-set-key (kbd "<f9>") 'smart-compile)
 (global-set-key (kbd "<f11>") 'my-next-error)
 (global-set-key (kbd "<f12>") 'my-previous-error)
+
+;(global-set-key (kbd "\C-c C-d") 'kill-this-buffer)
+;(global-set-key (kbd "\C-c C-a") 'switch-to-previous-buffer)
 
 (setq smart-compile-alist
       '(("\\.py\\'"."python %n.py")
@@ -90,14 +93,10 @@
   (other-window 1)
   (insert "python "))
 
-
 (defun python-run ()
   (interactive)
   (defvar name-only (file-name-sans-extension (buffer-name)))
   (shell-command (format "python  \"%s.py\"" name-only (buffer-name))))
-
-(global-set-key (kbd "\C-c C-d") 'kill-this-buffer)
-(global-set-key (kbd "\C-c C-a") 'switch-to-previous-buffer)
 
 (defun switch-to-previous-buffer ()
   (interactive)
