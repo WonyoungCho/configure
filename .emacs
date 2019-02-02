@@ -39,7 +39,7 @@
 (global-unset-key (kbd "<f10>"))
 (global-set-key (kbd "\C-c C-s") 'gnuplot-run-buffer)
 (global-set-key (kbd "\C-c C-g") 'gnuplot-mode)
-(global-set-key (kbd "\C-c C-a") 'my-macro)
+;(global-set-key (kbd "\C-c C-a") 'my-macro)
 (global-set-key (kbd "\C-x C-a") 'other-window)
 (global-set-key (kbd "\C-a") 'clipboard-yank)
 (global-set-key (kbd "\C-z") 'undo)
@@ -101,3 +101,21 @@
 (defun switch-to-previous-buffer ()
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
+
+;; Save and compile a current latex file.
+(require 'tex-buf)
+(defun run-latexmk ()
+  (interactive)
+  (let ((TeX-save-query nil)
+        (TeX-process-asynchronous nil)
+        (master-file (TeX-master-file)))
+    (TeX-save-document "")
+    (TeX-run-TeX "latexmk"
+         (TeX-command-expand "latexmk -pdf %t" 'TeX-master-file)
+         master-file)
+    (if (plist-get TeX-error-report-switches (intern master-file))
+        (TeX-next-error t)
+      (minibuffer-message "latexmk done"))))
+
+(add-hook 'LaTeX-mode-hook
+          (lambda () (local-set-key (kbd "C-c C-d") #'run-latexmk)))
