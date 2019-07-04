@@ -4,6 +4,9 @@
                          ("marmalade" . "https://marmalade-repo.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 
+(custom-set-faces
+ '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight bold :height 161 :width normal :foundry "monotype" :family "Courier New")))))
+
 (define-derived-mode cuda-mode c-mode "CUDA"
   "CUDA mode."
   (setq c-basic-offset 4))
