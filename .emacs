@@ -1,25 +1,27 @@
-(custom-set-variables
-'(initial-frame-alist (quote ((fullscreen . maximized)))))
-
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t)
- '(scroll-bar-mode (quote right)))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight bold :height 161 :width normal :foundry "monotype" :family "Courier New")))))
-
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-(display-time)
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :sla\
+nt normal :weight bold :height 161 :width normal :foundry "monotype" :family "Courier New"))))
+ '(font-lock-comment-face ((t (:foreground "firebrick")))))
+
+(define-derived-mode cuda-mode c-mode "CUDA"
+  "CUDA mode."
+  (setq c-basic-offset 4))
+
+(add-to-list 'auto-mode-alist '("\\.cu\\'" . cuda-mode))
+;;(add-to-list 'auto-mode-alist '("\\.R\\'" . ess-mode))
+
+;;(add-to-list 'auto-mode-alist '("\\.nf\\'" . groovy-mode))
 
 (global-font-lock-mode t)
 (show-paren-mode t)
@@ -29,94 +31,75 @@
 ;;(setq gdb-many-windows t)
 (setq backup-inhibited t)
 (setq column-number-mode t)
-;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;(add-to-list 'load-path "~/.emacs.d/themes")
-;(require 'color-theme)
-;(color-theme-initialize)
-;(color-theme-tango)
-;(load-theme 'moe)
 
-(global-unset-key (kbd "\C-z"))
-(global-unset-key (kbd "<f10>"))
-(global-set-key (kbd "\C-c C-s") 'gnuplot-run-buffer)
-(global-set-key (kbd "\C-c C-g") 'gnuplot-mode)
-;(global-set-key (kbd "\C-c C-a") 'my-macro)
-(global-set-key (kbd "\C-x C-a") 'other-window)
-(global-set-key (kbd "\C-a") 'clipboard-yank)
-(global-set-key (kbd "\C-z") 'undo)
-(global-set-key (kbd "<f2>") 'call-last-kbd-macro)
-(global-set-key (kbd "<f4>") 'split-window-right)
-(global-set-key (kbd "<M-up>") 'enlarge-window)
-(global-set-key (kbd "<M-down>") 'shrink-window)
-(global-set-key (kbd "<f5>") 'enlarge-window-horizontally)
-(global-set-key (kbd "<f6>") 'other-window)
-(global-set-key (kbd "<f7>") 'split-window-below)
-(global-set-key (kbd "<f8>") 'delete-other-windows)
-(global-set-key (kbd "<f9>") 'smart-compile)
-(global-set-key (kbd "<f11>") 'my-next-error)
-(global-set-key (kbd "<f12>") 'my-previous-error)
 
-;(global-set-key (kbd "\C-c C-d") 'kill-this-buffer)
-;(global-set-key (kbd "\C-c C-a") 'switch-to-previous-buffer)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(haskell-mode-hook '(turn-on-haskell-indentation))
+ '(package-selected-packages '(jupyter smart-compile ess)))
+
+(global-set-key (kbd "\C-z") 'write-print)
+(global-font-lock-mode t)
+(show-paren-mode t)
+(global-auto-revert-mode 1)
+;;(global-linum-mode 1)
+(define-key global-map (kbd "RET") 'newline-and-indent)
+;;(setq gdb-many-windows t)
+(setq backup-inhibited t)
+(setq column-number-mode t)
+
+
+
+
+(global-set-key (kbd "\C-z") 'write-print)
+;(global-set-key (kbd "<M-down>") 'enlarge-window)
+;(global-set-key (kbd "<M-up>") 'shrink-window)
+;(global-set-key (kbd "<M-right>") 'enlarge-window-horizontally)
+;(global-set-key (kbd "<M-left>") 'shrink-window-horizontally)
+(global-set-key (kbd "<prior>")'kill-compilation)
+(global-set-key (kbd "<f8>") 'split-window-right)
+(global-set-key (kbd "<next>") 'my-compile)
+(global-set-key (kbd "C-c w") 'toggle-truncate-lines)
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+(global-set-key (kbd "C-x <right>") 'windmove-right)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
+;(global-set-key (kbd "S-<end>") 'mark-from-point-to-end-of-line)
+
+(defun write-print ()
+  (interactive)
+  (insert "print()")
+  (call-interactively 'backward-char))
 
 (setq smart-compile-alist
-      '(("\\.py\\'"."python %n.py")
-	("\\.for\\'"."ifort -ffixed-line-length-none %f -o %n.exe")
+      '(("\\.py\\'"."python3 %f")
+	("\\.R\\'"."Rscript %f")
+	("\\.md\\'"."marp %f")
+        ("\\.c\\'"."gcc %f -o a && ./a")
+        ("\\.for\\'"."ifort -ffixed-line-length-none %f -o %n.exe")
         ("\\.f90\\'"."gfortran -fopenmp %f -o a && ./a")
-        ("\\.tex\\'"."pdflatex %f %n")))
+        ("\\.tex\\'"."pdflatex %f %n")
+        ("\\.cu\\'"."nvcc -arch=sm_75 -o a %f && ./a")
+        ("\\.sim\\'"."plink --simulate %f --make-bed --out test --simulate-ncases 10 --simulate-ncontrols 10")))
 (setq compilation-read-command nil)
 
-;; Close the compilation window if there was no error at all.
-(setq compilation-exit-message-function
-      (lambda (status code msg)
-        ;; If M-x compile exists with a 0
-        (when (and (eq status 'exit) (zerop code))
-          ;; then bury the *compilation* buffer, so that C-x b doesn't go there
-          (bury-buffer "*compilation*"))
-          ;; and return to whatever were looking at before
-	  ;(delete-window (get-buffer-window (get-buffer "*compilation*"))))
-          ;(replace-buffer-in-windows "*compilation*"))
-        ;; Always return the anticipated result of compilation-exit-message-function
-        (cons msg code)))
-
-(defun bind-keys ()
-  "do something"
+(defun my-compile ()
+  "Save and compile"
   (interactive)
-  (split-window-below)
-  (other-window 1)
-  (eshell)
-  (insert "python "))
-;  (insert (expand-file-name filename)))
+  (call-interactively 'save-buffer)
+  (call-interactively 'smart-compile))
 
-(defun below-keys ()
-  "do something"
-  (interactive)
-  (other-window 1)
-  (insert "python "))
+(electric-pair-mode 1)
 
-(defun python-run ()
-  (interactive)
-  (defvar name-only (file-name-sans-extension (buffer-name)))
-  (shell-command (format "python  \"%s.py\"" name-only (buffer-name))))
+(add-hook 'python-mode-hook
+	  (lambda () (setq python-indent-offset 4)))
 
-(defun switch-to-previous-buffer ()
-  (interactive)
-  (switch-to-buffer (other-buffer (current-buffer) 1)))
 
-;; Save and compile a current latex file.
-(require 'tex-buf)
-(defun run-latexmk ()
-  (interactive)
-  (let ((TeX-save-query nil)
-        (TeX-process-asynchronous nil)
-        (master-file (TeX-master-file)))
-    (TeX-save-document "")
-    (TeX-run-TeX "latexmk"
-         (TeX-command-expand "latexmk -pdf %t" 'TeX-master-file)
-         master-file)
-    (if (plist-get TeX-error-report-switches (intern master-file))
-        (TeX-next-error t)
-      (minibuffer-message "latexmk done"))))
-
-(add-hook 'LaTeX-mode-hook
-          (lambda () (local-set-key (kbd "C-c C-d") #'run-latexmk)))
+(defun myindent-ess-hook ()
+  (setq ess-indent-level 2)
+  (setq ess-offset-arguments-newline '(prev-line 2))
+)
+(add-hook 'ess-mode-hook 'myindent-ess-hook)
