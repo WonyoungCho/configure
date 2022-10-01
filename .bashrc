@@ -22,8 +22,8 @@ function cv() { column -ts $'\t' $1 |less;}
 function cvc() { column -ts $',' $1 |less;}
 function l5() { h5dump $1 |less;}
 
-function scpi() { scp -r ycho@220.125.199.66:$1 . ;}
-function scpo() { scp -r $1 ycho@220.125.199.66:~/getdata ;}
+function scpi() { scp -r ycho@ipadd:$1 . ;}
+function scpo() { scp -r $1 ycho@ipadd:~/getdata ;}
 
 function ngh() { ngrok http $1;}
 
