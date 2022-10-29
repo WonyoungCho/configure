@@ -77,6 +77,7 @@ nt normal :weight bold :height 161 :width normal :foundry "monotype" :family "Co
 (setq smart-compile-alist
       '(("\\.py\\'"."python3 %f")
 	("\\.R\\'"."Rscript %f")
+	("\\.r\\'"."Rscript %f")
 	("\\.md\\'"."marp %f")
         ("\\.c\\'"."gcc %f -o a && ./a")
         ("\\.for\\'"."ifort -ffixed-line-length-none %f -o %n.exe")
