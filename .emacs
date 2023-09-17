@@ -23,6 +23,7 @@ nt normal :weight bold :height 161 :width normal :foundry "monotype" :family "Co
 
 ;;(add-to-list 'auto-mode-alist '("\\.nf\\'" . groovy-mode))
 
+(global-auto-complete-mode t)
 (global-font-lock-mode t)
 (show-paren-mode t)
 (global-auto-revert-mode 1)
