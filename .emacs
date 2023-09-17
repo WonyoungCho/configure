@@ -79,7 +79,7 @@ nt normal :weight bold :height 161 :width normal :foundry "monotype" :family "Co
   (insert "print()")
   (call-interactively 'backward-char))
 
-(defun mark-line ()
+(defun comment-line ()
   (interactive)
   (call-interactively 'mark-defun)
   (call-interactively 'comment-region))
