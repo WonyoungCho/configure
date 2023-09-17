@@ -57,8 +57,8 @@ nt normal :weight bold :height 161 :width normal :foundry "monotype" :family "Co
 
 
 (global-set-key (kbd "M-;") 'comment-line) 
+(global-set-key (kbd "M-a") 'mark-whole-buffer) 
 (global-set-key (kbd "C-x C-a") 'mark-paragraph)
-;(global-set-key (kbd "C-x C-a") 'mark-whole-buffer) 
 (global-set-key (kbd "C-z") 'write-print)
 ;(global-set-key (kbd "<M-down>") 'enlarge-window)
 ;(global-set-key (kbd "<M-up>") 'shrink-window)
