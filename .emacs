@@ -79,11 +79,6 @@ nt normal :weight bold :height 161 :width normal :foundry "monotype" :family "Co
   (insert "print()")
   (call-interactively 'backward-char))
 
-(defun comment-line ()
-  (interactive)
-  (call-interactively 'mark-defun)
-  (call-interactively 'comment-region))
-
 (setq smart-compile-alist
       '(("\\.py\\'"."python3 %f")
 	("\\.R\\'"."Rscript %f")
