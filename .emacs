@@ -56,8 +56,10 @@ nt normal :weight bold :height 161 :width normal :foundry "monotype" :family "Co
 
 
 
-
-(global-set-key (kbd "\C-z") 'write-print)
+(global-set-key (kbd "M-;") 'comment-line) 
+(global-set-key (kbd "C-x C-a") 'mark-paragraph)
+;(global-set-key (kbd "C-x C-a") 'mark-whole-buffer) 
+(global-set-key (kbd "C-z") 'write-print)
 ;(global-set-key (kbd "<M-down>") 'enlarge-window)
 ;(global-set-key (kbd "<M-up>") 'shrink-window)
 ;(global-set-key (kbd "<M-right>") 'enlarge-window-horizontally)
@@ -76,6 +78,11 @@ nt normal :weight bold :height 161 :width normal :foundry "monotype" :family "Co
   (interactive)
   (insert "print()")
   (call-interactively 'backward-char))
+
+(defun mark-line ()
+  (interactive)
+  (call-interactively 'mark-defun)
+  (call-interactively 'comment-region))
 
 (setq smart-compile-alist
       '(("\\.py\\'"."python3 %f")
